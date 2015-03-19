@@ -1,0 +1,11 @@
+{
+  "name": "fingdex",
+  "version": "1.0.0",
+  "description": "Flexible indexing and storage of things",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joshwnj",
+  "license": "MIT"
+}
