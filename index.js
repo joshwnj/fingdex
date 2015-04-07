@@ -1,3 +1,5 @@
+'use strict';
+
 function Fingdex (source) {
   this.source = source;
   this._lastSourceSeq = -1;
