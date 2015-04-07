@@ -1,11 +1,17 @@
 {
-  "name": "fingdex",
-  "version": "0.0.0",
-  "description": "Flexible indexing and storage of things",
-  "main": "index.js",
+  "name": "team-index",
+  "version": "0.0.1",
+  "description": "Playground fo X-Team Team Index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "main": "babel-node index.js"
   },
-  "author": "joshwnj",
-  "license": "MIT"
+  "dependencies": {
+    "babel": "^5.0.8",
+    "bytewise": "^0.8.0",
+    "levelup": "^0.19.0",
+    "memdown": "^1.0.0"
+  },
+  "devDependencies": {},
+  "author": "Josh",
+  "license": "ISC"
 }
