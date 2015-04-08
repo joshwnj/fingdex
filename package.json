@@ -10,5 +10,19 @@
   "license": "MIT",
   "devDependencies": {
     "tape": "^4.0.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwnj/fingdex.git"
+  },
+  "keywords": [
+    "index"
+  ],
+  "bugs": {
+    "url": "https://github.com/joshwnj/fingdex/issues"
+  },
+  "homepage": "https://github.com/joshwnj/fingdex"
 }
