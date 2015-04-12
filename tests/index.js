@@ -8,27 +8,31 @@ tape('Basic usage', function (t) {
   let source = new Fingdex();
   let docIndex = require('../lib/doc-index')(source);
 
-  source.addEntry({
+  var items = [];
+
+  items.push({
     _id: 'pizza',
     _type: 'food',
     slices: 8
   });
 
-  source.addEntry({
+  items.push({
     _id: 'donut',
     _type: 'food',
     slices: 2
   });
 
-  source.addEntry({
+  items.push({
     _id: 'cat',
     _type: 'animal'
   });
 
-  t.equals(docIndex.getDoc('donut'), undefined, 'Manual catchup by default');
+  items.forEach(source.append.bind(source));
+
+  t.equals(docIndex.getDoc('donut'), undefined, 'Doc index wont be populated until manual catchup');
 
   // who are we kidding, you can't really slice a donut
-  source.addEntry({
+  source.append({
     _id: 'donut',
     slices: 1
   });
@@ -41,7 +45,7 @@ tape('Basic usage', function (t) {
   foods.catchup();
   t.ok(foods.ids.has('donut'), 'Set includes food');
   t.ok(foods.ids.has('pizza'), 'Set includes food');
-  t.ok(!foods.ids.has('cat'), 'Set doesn\'t include non-food docs');
+  t.ok(!foods.ids.has('cat'), 'Set doesnt include non-food docs');
 
   t.end();
 });
