@@ -29,3 +29,4 @@ Fingdex.prototype.through = function () {};
 
 
 module.exports = Fingdex;
+module.exports.createDocIndex = require('./lib/doc-index');

@@ -2,11 +2,10 @@
 
 let tape = require('tape');
 let Fingdex = require('../');
-let indexByType = require('../lib/by-type');
 
 tape('Basic usage', function (t) {
   let source = new Fingdex();
-  let docIndex = require('../lib/doc-index')(source);
+  let docIndex = Fingdex.createDocIndex(source);
 
   var items = [];
 
@@ -41,7 +40,7 @@ tape('Basic usage', function (t) {
   t.equals(docIndex.getDoc('donut').slices, 1, 'Doc value matches the latest update');
 
   // create an index of foods
-  let foods = indexByType(docIndex, 'food');
+  let foods = docIndex.createIndexByType('food');
   foods.catchup();
   t.ok(foods.ids.has('donut'), 'Set includes food');
   t.ok(foods.ids.has('pizza'), 'Set includes food');
