@@ -4,6 +4,7 @@ function Fingdex (source) {
   this.source = source;
   this._changes = [];
   this._lastCuid = 0;
+  this._cuidSeq = 0;
 }
 
 Fingdex.prototype.catchup = function () {
@@ -20,6 +21,11 @@ Fingdex.prototype.catchup = function () {
 };
 
 Fingdex.prototype.emitChange = function (change) {
+  if (!change.hasOwnProperty('_cuid')) {
+    change._cuid = this._cuidSeq;
+    this._cuidSeq += 1;
+  }
+
   this._changes.push(change);
 };
 

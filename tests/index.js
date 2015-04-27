@@ -8,21 +8,18 @@ function createFakeSource () {
   var items = [];
 
   items.push({
-    _cuid: 0,
     _id: 'pizza',
     _type: 'food',
     slices: 8
   });
 
   items.push({
-    _cuid: 1,
     _id: 'donut',
     _type: 'food',
     slices: 2
   });
 
   items.push({
-    _cuid: 2,
     _id: 'cat',
     _type: 'animal'
   });
@@ -41,7 +38,6 @@ tape('Basic usage', function (t) {
 
   // who are we kidding, you can't really slice a donut
   source.emitChange({
-    _cuid: 3,
     _id: 'donut',
     slices: 1
   });
