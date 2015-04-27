@@ -3,35 +3,45 @@
 let tape = require('tape');
 let Fingdex = require('../');
 
-tape('Basic usage', function (t) {
+function createFakeSource () {
   let source = new Fingdex();
-  let docIndex = Fingdex.createDocIndex(source);
-
   var items = [];
 
   items.push({
+    _cuid: 0,
     _id: 'pizza',
     _type: 'food',
     slices: 8
   });
 
   items.push({
+    _cuid: 1,
     _id: 'donut',
     _type: 'food',
     slices: 2
   });
 
   items.push({
+    _cuid: 2,
     _id: 'cat',
     _type: 'animal'
   });
 
-  items.forEach(source.append.bind(source));
+  // make a fake source that emits some changes
+  items.forEach(source.emitChange.bind(source));
+
+  return source;
+}
+
+tape('Basic usage', function (t) {
+  const source = createFakeSource();
+  const docIndex = Fingdex.createDocIndex(source);
 
   t.equals(docIndex.getDoc('donut'), undefined, 'Doc index wont be populated until manual catchup');
 
   // who are we kidding, you can't really slice a donut
-  source.append({
+  source.emitChange({
+    _cuid: 3,
     _id: 'donut',
     slices: 1
   });
